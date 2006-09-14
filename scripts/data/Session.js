@@ -206,7 +206,7 @@ function Session()
 		catch(e) {}
 	}
 
-	return this.fDownloadServiceMgr != null;
+	return (this.fDownloadServiceMgr != null) && (this.fWidgetHelper != null);
 }
 
 /******************************************************************************/

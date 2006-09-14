@@ -171,8 +171,8 @@ function ListControl(/*string*/ controlID, /*string*/ screenID, /*int*/ numRows,
 	}
 	else
 	{
-		//if(this.fFocusedItem != null)
-		//	this.fFocusedItem.setFocus(false);
+		if(this.fFocusedItem != null)
+			this.fFocusedItem.setFocus(false);
 	}
 }
 

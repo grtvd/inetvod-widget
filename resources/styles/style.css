@@ -40,9 +40,9 @@ body
 .textCtr	/*TODO: rename?*/
 {
 	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #DAF9FC;
+	font-size: 12pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFC0;
 }
 .textDataCtr	/*TODO: rename?*/
 {
@@ -140,8 +140,8 @@ body
 	padding-right: 5px;
 	font-weight: bold;
 	font-size: 12pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #64226B;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFC0;
 	text-align: left;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -199,7 +199,7 @@ body
 	padding-right: 5px;
 	font-weight: bold;
 	font-size: 10pt;
-	font-family : Verdana, Arial, Helvetica;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
 	color: #FFFFFF;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -213,7 +213,7 @@ body
 	padding-right: 5px;
 	font-weight: bold;
 	font-size: 10pt;
-	font-family : Verdana, Arial, Helvetica;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
 	color: #FFFF40;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -227,9 +227,9 @@ body
 	padding-left: 10px;
 	padding-right: 5px;
 	font-weight: normal;
-	font-size: 10pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #DAF9FC;
+	font-size: 8pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -241,9 +241,9 @@ body
 	padding-left: 10px;
 	padding-right: 5px;
 	font-weight: normal;
-	font-size: 10pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #027095;
+	font-size: 8pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFF40;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -253,181 +253,92 @@ body
 .listCtrCount
 {
 	font-weight: bold;
-	font-size: 20pt;
+	font-size: 8pt;
 	font-family : Verdana, Arial, Helvetica;
-	color: #B9E1F4;
+	color: #FFFFC0;
 }
 
 .listCtrPrev_normal
 {
 	behavior: url(styles/controls.htc);
-	width: 27px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-image: url(../images/listCtrPrevNormal.gif);
 	cursor: hand;
 }
 .listCtrPrev_hilite
 {
 	behavior: url(styles/controls.htc);
-	width: 27px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-image: url(../images/listCtrPrevHilite.gif);
 	cursor: hand;
 }
 .listCtrPrev_disabled
 {
-	width: 27px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-image: url(../images/listCtrPrevDisabled.gif);
 }
 .listCtrNext_normal
 {
 	behavior: url(styles/controls.htc);
-	width: 27px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-image: url(../images/listCtrNextNormal.gif);
 	cursor: hand;
 }
 .listCtrNext_hilite
 {
 	behavior: url(styles/controls.htc);
-	width: 27px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-image: url(../images/listCtrNextHilite.gif);
 	cursor: hand;
 }
 .listCtrNext_disabled
 {
-	width: 27px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-image: url(../images/listCtrNextDisabled.gif);
 }
 
-.buttonCtr180_normal
+.buttonCtr100_normal
 {
 	behavior: url(styles/controls.htc);
-	width: 180px;
-	height: 54px;
+	width: 100px;
+	height: 16px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family: Verdana, Arial, Helvetica;
-	color: #DAF9FC;
+	font-size: 12pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
 	text-align: center;
-	background-image: url(../images/buttonCtr180Normal.gif);
+	background-image: url(../images/buttonCtr100Normal.gif);
 	cursor: hand;
 }
-.buttonCtr180_hilite
+.buttonCtr100_hilite
 {
 	behavior: url(styles/controls.htc);
-	width: 180px;
-	height: 54px;
+	width: 100px;
+	height: 16px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family: Verdana, Arial, Helvetica;
-	color: #027095;
+	font-size: 12pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFF40;
 	text-align: center;
-	background-image: url(../images/buttonCtr180Hilite.gif);
+	background-image: url(../images/buttonCtr100Normal.gif);
 	cursor: hand;
 }
-.buttonCtr180_disabled
+.buttonCtr100_disabled
 {
-	width: 180px;
-	height: 54px;
+	width: 100px;
+	height: 16px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family: Verdana, Arial, Helvetica;
+	font-size: 12pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	color: #808080;
 	text-align: center;
-	background-image: url(../images/buttonCtr180Disabled.gif);
-}
-
-.buttonCtr220_normal
-{
-	behavior: url(styles/controls.htc);
-	width: 200px;
-	padding-left: 20px;
-	height: 54px;
-	font-weight: bold;
-	font-size: 22pt;
-	font-family: Verdana, Arial, Helvetica;
-	color: #DAF9FC;
-	text-align: left;
-	background-image: url(../images/buttonCtr220Normal.gif);
-	cursor: hand;
-}
-.buttonCtr220_hilite
-{
-	behavior: url(styles/controls.htc);
-	width: 200px;
-	padding-left: 20px;
-	height: 54px;
-	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #027095;
-	text-align: left;
-	background-image: url(../images/buttonCtr220Hilite.gif);
-	cursor: hand;
-}
-
-.buttonCtr438_normal
-{
-	behavior: url(styles/controls.htc);
-	width: 418px;
-	padding-left: 20px;
-	height: 54px;
-	font-weight: bold;
-	font-size: 22pt;
-	font-family: Verdana, Arial, Helvetica;
-	color: #DAF9FC;
-	text-align: left;
-	background-image: url(../images/buttonCtr438Normal.gif);
-	/*filter: alpha(opacity=70);*/
-	cursor: hand;
-}
-.buttonCtr438_hilite
-{
-	behavior: url(styles/controls.htc);
-	width: 418px;
-	padding-left: 20px;
-	height: 54px;
-	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #027095;
-	text-align: left;
-	background-image: url(../images/buttonCtr438Hilite.gif);
-	/*filter: alpha(opacity=70);*/
-	cursor: hand;
-}
-
-.buttonCtr600_normal
-{
-	behavior: url(styles/controls.htc);
-	width: 580px;
-	padding-left: 20px;
-	height: 54px;
-	font-weight: bold;
-	font-size: 22pt;
-	font-family: Verdana, Arial, Helvetica;
-	color: #DAF9FC;
-	text-align: left;
-	background-image: url(../images/buttonCtr600Normal.gif);
-	cursor: hand;
-}
-.buttonCtr600_hilite
-{
-	behavior: url(styles/controls.htc);
-	width: 580px;
-	padding-left: 20px;
-	height: 54px;
-	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #027095;
-	text-align: left;
-	background-image: url(../images/buttonCtr600Hilite.gif);
-	cursor: hand;
+	background-image: url(../images/buttonCtr100Normal.gif);
 }
 
 .editCtr225_normal

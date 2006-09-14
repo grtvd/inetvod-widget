@@ -1110,6 +1110,8 @@ function MainApp()
 		oScreen.show(true);
 		oScreen.setFocus(true);
 	}
+	else
+		NowPlayingScreen.newInstance();
 }
 
 /******************************************************************************/
@@ -2813,8 +2815,8 @@ function ListControl(/*string*/ controlID, /*string*/ screenID, /*int*/ numRows,
 	}
 	else
 	{
-		if(this.fFocusedItem != null)
-			this.fFocusedItem.setFocus(false);
+		//if(this.fFocusedItem != null)
+		//	this.fFocusedItem.setFocus(false);
 	}
 }
 
@@ -4178,7 +4180,7 @@ function Session()
 		catch(e) {}
 	}
 
-	return this.fDownloadServiceMgr != null;
+	return (this.fDownloadServiceMgr != null) && (this.fWidgetHelper != null);
 }
 
 /******************************************************************************/
@@ -7032,7 +7034,12 @@ function StartupDoSetupSignon(/*string*/ userID, /*string*/ userPassword,
 /******************************************************************************/
 
 NowPlayingScreen.ScreenID = "Show002";
+NowPlayingScreen.PlayListID = "Show002_PlayList";
+NowPlayingScreen.FeaturedID = "Show002_Featured";
+NowPlayingScreen.CloseID = "Show002_Close";
 NowPlayingScreen.ShowListID = "Show002_ShowList";
+NowPlayingScreen.PlayID = "Show002_Play";
+NowPlayingScreen.SendID = "Show002_Send";
 NowPlayingScreen.NoShowsTextID = "Show002_NoShowsText";
 
 /******************************************************************************/
@@ -7069,16 +7076,23 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	var oRowItemList = new Array();
 	oRowItemList.push(new ListControlRowItem("Show", 380));
 
-	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 120);
+	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 10);
 	this.fContainerControl.onNavigate = NowPlayingScreen.onNavigate;
 
 	var oControl;
+
+	this.newControl(new ButtonControl(NowPlayingScreen.PlayListID, this.ScreenID));
+	this.newControl(new ButtonControl(NowPlayingScreen.FeaturedID, this.ScreenID));
+	this.newControl(new ButtonControl(NowPlayingScreen.CloseID, this.ScreenID));
 
 	oControl = new RentedShowListControl(NowPlayingScreen.ShowListID, this.ScreenID,
 		6, oRowItemList, rentedShowSearchList);
 	if(rentedShowSearchList.length > 0)
 		this.newControl(oControl);
 	oControl.show(rentedShowSearchList.length > 0);
+
+	this.newControl(new ButtonControl(NowPlayingScreen.PlayID, this.ScreenID));
+	this.newControl(new ButtonControl(NowPlayingScreen.SendID, this.ScreenID));
 
 	oControl = new TextControl(NowPlayingScreen.NoShowsTextID, this.ScreenID);
 	if(rentedShowSearchList.length == 0)
@@ -7093,7 +7107,22 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	var oSession = MainApp.getThe().getSession();
 	var oRentedShowListControl;
 
-	if(controlID == NowPlayingScreen.ShowListID)
+	if(controlID == NowPlayingScreen.PlayListID)
+	{
+		this.close();
+		NowPlayingScreen.newInstance();
+		return;
+	}
+	else if(controlID == NowPlayingScreen.FeaturedID)
+	{
+		return;
+	}
+	else if(controlID == NowPlayingScreen.CloseID)
+	{
+		window.close();
+		return;
+	}
+	else if((controlID == NowPlayingScreen.ShowListID) || (controlID == NowPlayingScreen.PlayID))
 	{
 		oRentedShowListControl = this.getControl(NowPlayingScreen.ShowListID);
 		var rentedShowID = oRentedShowListControl.getFocusedItemValue().RentedShowID;
@@ -7143,6 +7172,13 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	}
 
 	Screen.prototype.onButton.call(this, controlID);
+}
+
+/******************************************************************************/
+
+/*string*/ NowPlayingScreen.onNavigate = function(/*string*/ fromControl, /*int*/ key)
+{
+	return null;
 }
 
 /******************************************************************************/

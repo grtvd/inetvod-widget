@@ -172,6 +172,8 @@ function MainApp()
 		oScreen.show(true);
 		oScreen.setFocus(true);
 	}
+	else
+		NowPlayingScreen.newInstance();
 }
 
 /******************************************************************************/
