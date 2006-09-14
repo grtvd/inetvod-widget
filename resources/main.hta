@@ -1,0 +1,167 @@
+<html>
+<head>
+<title>iNetVOD Widget</title>
+<hta:application id="inetvodwidget"
+	applicationname="inetvodwidget"
+	border="thin"
+	caption="yes"
+	showintaskbar="yes"
+	singleinstance="yes"
+	sysmenu="yes"
+	scroll="no"
+	windowstate="normal" />
+<link rel="stylesheet" href="styles/style.css" type="text/css"/>
+</head>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript">
+function init()
+{
+	MainApp.getThe().init();
+}
+</script>
+<body id="MainBody">
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<div id="StartUp001" style="position:absolute; display:none">
+<table cellpadding=0 cellspacing=0 border=0 width=390>
+	<tr><td id="StartUp001_Text" class="textCtr" style="text-align:center;">
+		</td></tr>
+</table>
+</div>
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<div id="Show002" style="position:absolute; display:none">
+
+<div id="Show002_ShowList">
+<table cellpadding=0 cellspacing=0 border=0 width=964>
+	<tr><td>
+		<table cellpadding=0 cellspacing=3 border=0 width=386>
+			<tr><td
+				><span class="listCtrHeader" style="width:380;">Show</span
+				></td>
+			</tr>
+			<tr><td id="Show002_ShowList_0" class="listCtrRow380_normal"
+				><span id="Show002_ShowList_0_Show" class="listCtrItem_normal"></span
+				></td>
+			</tr>
+			<tr><td id="Show002_ShowList_1" class="listCtrRow380_normal"
+				><span id="Show002_ShowList_1_Show" class="listCtrItem_normal"></span
+				></td>
+			</tr>
+			<tr><td id="Show002_ShowList_2" class="listCtrRow380_normal"
+				><span id="Show002_ShowList_2_Show" class="listCtrItem_normal"></span
+				></td>
+			</tr>
+			<tr><td id="Show002_ShowList_3" class="listCtrRow380_normal"
+				><span id="Show002_ShowList_3_Show" class="listCtrItem_normal"></span
+				></td>
+			</tr>
+			<tr><td id="Show002_ShowList_4" class="listCtrRow380_normal"
+				><span id="Show002_ShowList_4_Show" class="listCtrItem_normal"></span
+				></td>
+			</tr>
+			<tr><td id="Show002_ShowList_5" class="listCtrRow380_normal"
+				><span id="Show002_ShowList_5_Show" class="listCtrItem_normal"></span
+				></td>
+			</tr>
+		</table>
+
+		<table cellpadding=0 cellspacing=0 border=0 width=692><tr><td align="right" valign="top">
+			<table cellpadding=0 cellspacing=6 border=0>
+				<tr><td id="Show002_ShowList_Count" class="listCtrCount">0 of 0</td
+					><td width=5><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td
+					><td id="Show002_ShowList_Up" class="listCtrPrev_normal"></td
+					><td id="Show002_ShowList_Down" class="listCtrNext_normal"></td
+				></tr>
+			</table>
+		</td></tr></table>
+	</td></tr>
+</table>
+</div>
+
+<!-- *********************************************************************** -->
+
+<div id="Show002_NoShowsText" class="textCtr" style="position:relative; left:100; top:80; width:764; display:none">
+Your Now Playing list is empty. Shows that you rent will be listed here.<br>
+<br>
+It is a good idea to rent multiple shows at a time. This will allow new shows to
+be downloaded while your are watching another show.
+</div>
+</div>
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<div id="Wait001" style="position:absolute; left:0; top:0; display:none;">
+
+<div id="Wait001_Backround" style="position:absolute; left:0; top:0;">
+<table width=400 height=400 cellpadding=0 cellspacing=0 border=0>
+	<tr><td style="background-color:#222222; filter:alpha(opacity=70)">&nbsp;</td></tr>
+</table>
+</div>
+
+<div id="Wait001_Image" style="position:absolute; left:0; top:0;">
+<table width="100%" cellpadding=0 cellspacing=0 border=0>
+	<tr><td height=190><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
+	<tr><td align=center valign=middle>
+		<img src="images/wait.gif" alt="Please wait...">
+	</td></tr>
+</table>
+</div>
+
+</div>
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<table width="100%" height="100%" cellpadding=0 cellspacing=0 border=0>
+	<tr><td align=left valign=top>
+<table id="MainTable" width=390 height=400 class="tableMain" cellpadding=0 cellspacing=0 border=0>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+	</td></tr>
+</table>
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<div id="ScaleDiv" style="position:absolute; left:10; top:10; display:none; font-size:8pt; background-color:white;">
+<a id="ScaleLink" href="javascript:tryit('DoScale();');">Scale</a><br>
+<span id="ScaleText"></span>
+</div>
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<div id="Debugger" style="position:absolute; left:0; top:0; top:50; display:none; font-size:8pt; background-color:white;">
+<a href="javascript:tryit('DebugShow();');">Debug</a>&nbsp;
+<a href="javascript:tryit('DebugClear();');">Clear</a><br>
+<span id="Debugger_Out"></span>
+</div>
+
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+</body>
+</html>
+<script for=document event=onkeyup type="text/javascript">
+	return !MainAppOnKeyUp();
+</script>
+<script for=document event=onkeydown type="text/javascript">
+	return !MainAppOnKeyDown();
+</script>
+<script for=document event=onkeypress type="text/javascript">
+	return !MainAppOnKeyPress();
+</script>
+<script for=window event=onresize type="text/javascript">
+	MainAppOnResize();
+</script>
+<script for=window event=onload type="text/javascript">
+	tryit('init();');
+</script>
