@@ -3995,6 +3995,7 @@ Session.newInstance = function()
 function Session()
 {
 	this.fDownloadServiceMgr = null;
+	this.fWidgetHelper = null;
 
 	this.fNetworkURL = "http://api.inetvod.com/inetvod/playerapi/xml";
 	this.fCryptoAPIURL = "http://api.inetvod.com/inetvod/cryptoapi";
@@ -4170,6 +4171,7 @@ function Session()
 		try
 		{
 			this.fDownloadServiceMgr = new ActiveXObject("iNetVOD.MCE.Gateway.DownloadServiceMgr");
+			this.fWidgetHelper = new ActiveXObject("iNetVOD.MCE.Widget.WidgetHelper");
 
 			this.fPlayer.SerialNo = this.fDownloadServiceMgr.getPlayerSerialNo();
 		}
@@ -4238,6 +4240,19 @@ function Session()
 		deleteCookie("password");
 		deleteCookie("remember");
 	}
+}
+
+/******************************************************************************/
+
+/*void*/ Session.prototype.openMediaPlayer = function(/*string*/ url)
+{
+	if(this.fWidgetHelper != null)
+	{
+		this.fWidgetHelper.openMediaPlayer(url);
+		return;
+	}
+
+	showMsg("Failed to open Media Player");
 }
 
 /******************************************************************************/
@@ -7106,8 +7121,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		if(!testStrHasLen(url))
 			url = watchShowResp.License.ShowURL;
 
-		oSession.fDownloadServiceMgr.openMediaPlayer(url);
-		//window.open("\"C:\\Program Files\\Windows Media Player\\wmplayer.exe\" /prefetch:9 /Play " + url);
+		oSession.openMediaPlayer(url);
 		return;
 	}
 

@@ -93,8 +93,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		if(!testStrHasLen(url))
 			url = watchShowResp.License.ShowURL;
 
-		oSession.fDownloadServiceMgr.openMediaPlayer(url);
-		//window.open("\"C:\\Program Files\\Windows Media Player\\wmplayer.exe\" /prefetch:9 /Play " + url);
+		oSession.openMediaPlayer(url);
 		return;
 	}
 
