@@ -94,6 +94,7 @@
 				<file name="StartupFlows.js" />
 				<file name="NowPlayingScreen.js" />
 				<file name="RentedShowListControl.js" />
+				<file name="RecommendScreen.js" />
 			</filelist>
 		</concat>
 	</target>

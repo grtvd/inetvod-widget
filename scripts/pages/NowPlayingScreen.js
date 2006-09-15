@@ -47,7 +47,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	oRowItemList.push(new ListControlRowItem("Show", 380));
 
 	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 10);
-	this.fContainerControl.onNavigate = NowPlayingScreen.onNavigate;
+	//this.fContainerControl.onNavigate = NowPlayingScreen.onNavigate;
 
 	var oControl;
 
@@ -80,7 +80,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	if(controlID == NowPlayingScreen.PlayListID)
 	{
 		this.close();
-		NowPlayingScreen.newInstance();
+		//NowPlayingScreen.newInstance();
 		return;
 	}
 	else if(controlID == NowPlayingScreen.FeaturedID)
@@ -123,6 +123,19 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		oSession.openMediaPlayer(url);
 		return;
 	}
+	else if(controlID == NowPlayingScreen.SendID)
+	{
+		oRentedShowListControl = this.getControl(NowPlayingScreen.ShowListID);
+		var rentedShowSearch = oRentedShowListControl.getFocusedItemValue();
+		var tempStr;
+
+		tempStr = rentedShowSearch.Name;
+		if(testStrHasLen(rentedShowSearch.EpisodeName))
+			tempStr += ' - "' + rentedShowSearch.EpisodeName + '"';
+
+		RecommendScreen.newInstance(tempStr);
+		return;
+	}
 
 	Screen.prototype.onButton.call(this, controlID);
 }
@@ -142,13 +155,6 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	}
 
 	Screen.prototype.onButton.call(this, controlID);
-}
-
-/******************************************************************************/
-
-/*string*/ NowPlayingScreen.onNavigate = function(/*string*/ fromControl, /*int*/ key)
-{
-	return null;
 }
 
 /******************************************************************************/

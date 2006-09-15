@@ -47,9 +47,9 @@ body
 .textDataCtr	/*TODO: rename?*/
 {
 	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #DAF9FC;
+	font-size: 12pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -65,9 +65,9 @@ body
 .textSmallCtr
 {
 	font-weight: normal;
-	font-size: 18pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #DAF9FC;
+	font-size: 10pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFC0;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -341,80 +341,39 @@ body
 	background-image: url(../images/buttonCtr100Normal.gif);
 }
 
-.editCtr225_normal
+.editCtr306_normal
 {
 	behavior: url(styles/controls.htc);
-	width: 225px;
-	height: 54px;
+	width: 306px;
+	height: 38px;
 	padding: 9px;
 	overflow: hidden;
-	background-image: url(../images/editCtr225Normal.gif);
-	cursor: hand;
-}
-.editCtr225_hilite
-{
-	behavior: url(styles/controls.htc);
-	width: 225px;
-	height: 54px;
-	padding: 9px;
-	overflow: hidden;
-	background-image: url(../images/editCtr225Hilite.gif);
-	cursor: hand;
-}
-
-.editCtr150_normal
-{
-	behavior: url(styles/controls.htc);
-	width: 150px;
-	height: 54px;
-	padding: 9px;
-	overflow: hidden;
-	background-image: url(../images/editCtr150Normal.gif);
+	background-image: url(../images/editCtr306Normal.gif);
 	cursor: hand;
 	/*border: 1px solid blue;*/
 }
-.editCtr150_hilite
+.editCtr306_hilite
 {
 	behavior: url(styles/controls.htc);
-	width: 150px;
-	height: 54px;
+	width: 306px;
+	height: 38px;
 	padding: 9px;
 	overflow: hidden;
-	background-image: url(../images/editCtr150Hilite.gif);
+	background-image: url(../images/editCtr306Hilite.gif);
 	cursor: hand;
 	/*border: 1px solid blue;*/
-}
-
-.editCtr500_normal
-{
-	behavior: url(styles/controls.htc);
-	width: 500px;
-	height: 54px;
-	padding: 9px;
-	overflow: hidden;
-	background-image: url(../images/editCtr500Normal.gif);
-	cursor: hand;
-}
-.editCtr500_hilite
-{
-	behavior: url(styles/controls.htc);
-	width: 500px;
-	height: 54px;
-	padding: 9px;
-	overflow: hidden;
-	background-image: url(../images/editCtr500Hilite.gif);
-	cursor: hand;
 }
 
 .editCtrCharNum_normal
 {
-	width: 22px;
-	height: 36px;
+	width: 18px;
+	height: 20px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
+	font-size: 12pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
 	color: #027095;
 	/*background-color: #F0F0F0;*/
+	text-align: center;
 	overflow: hidden;
 	text-overflow: clip;
 	white-space: nowrap;
@@ -422,13 +381,14 @@ body
 }
 .editCtrCharNum_hilite
 {
-	width: 22px;
-	height: 36px;
+	width: 18px;
+	height: 20px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
+	font-size: 12pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
 	color: #DAF9FC;
 	background-color: #027095;
+	text-align: center;
 	overflow: hidden;
 	text-overflow: clip;
 	white-space: nowrap;
@@ -437,12 +397,12 @@ body
 
 .editCtrCharAlpha_normal
 {
-	width: 30px;
-	height: 36px;
+	width: 18px;
+	height: 20px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #027095;
+	font-size: 12pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
 	/*background-color: #F0F0F0;*/
 	text-align: center;
 	overflow: hidden;
@@ -452,13 +412,13 @@ body
 }
 .editCtrCharAlpha_hilite
 {
-	width: 30px;
-	height: 36px;
+	width: 18px;
+	height: 20px;
 	font-weight: bold;
-	font-size: 22pt;
-	font-family : Verdana, Arial, Helvetica;
-	color: #DAF9FC;
-	background-color: #027095;
+	font-size: 12pt;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	background-color: #FFFFFF;
 	text-align: center;
 	overflow: hidden;
 	text-overflow: clip;

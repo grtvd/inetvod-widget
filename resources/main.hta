@@ -36,8 +36,7 @@ function init()
 
 <div id="Show002" style="position:absolute; display:none">
 
-<div id="Show002_ShowList">
-<table cellpadding=0 cellspacing=0 border=0 width=964>
+<table cellpadding=0 cellspacing=0 border=0 width=390>
 	<tr><td>
 		<table cellpadding=0 cellspacing=3 border=0>
 			<tr>
@@ -52,6 +51,11 @@ function init()
 	<tr><td height=20><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
 
 	<tr><td>
+		<div id="Show002_NoShowsText" style="height:166; display:none;">
+			<span class="textSmallCtr" style="width:380;">Your Now Playing list is empty.</span>
+		</div>
+
+		<div id="Show002_ShowList">
 		<table cellpadding=0 cellspacing=3 border=0 width=386>
 			<tr><td
 				><span class="listCtrHeader" style="width:380;">Playlist</span
@@ -92,9 +96,10 @@ function init()
 				></tr>
 			</table>
 		</td></tr></table>
+		</div>
 	</td></tr>
 
-	<tr><td height=20><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
+	<tr><td height=5><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
 
 	<tr><td>
 		<table cellpadding=0 cellspacing=3 border=0>
@@ -109,13 +114,57 @@ function init()
 </div>
 
 <!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
 
-<div id="Show002_NoShowsText" class="textCtr" style="position:relative; left:100; top:80; width:764; display:none">
-Your Now Playing list is empty. Shows that you rent will be listed here.<br>
-<br>
-It is a good idea to rent multiple shows at a time. This will allow new shows to
-be downloaded while your are watching another show.
-</div>
+<div id="Recom003" style="position:absolute; display:none">
+<table cellpadding=0 cellspacing=0 border=0 width=390>
+
+	<tr><td class="textCtr" colspan="2">Recommend</td></tr>
+	<tr><td height="5"><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
+	<tr>
+		<td width="20"><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td>
+		<td><span id="Recom003_ShowName" class="textDataCtr" style="width:330;"></span></td>
+	</tr>
+
+	<tr><td height="20"><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
+
+	<tr><td class="textCtr" colspan="2">Enter email address:</td></tr>
+	<tr><td height="5"><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td></tr>
+	<tr>
+		<td width="20"><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td>
+		<td
+		><table cellpadding=0 cellspacing=6 border=0
+			><tr><td><span id="Recom003_Email" class="editCtr306_normal"
+					><span id="Recom003_Email_0" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_1" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_2" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_3" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_4" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_5" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_6" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_7" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_8" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_9" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_10" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_11" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_12" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_13" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_14" class="editCtrCharAlpha_normal"></span
+					><span id="Recom003_Email_15" class="editCtrCharAlpha_normal"></span
+				></span></td
+			></tr
+		></table>
+		<br>
+		<br>
+	</td></tr>
+	<tr><td align="center" colspan="2"
+		><table cellpadding=0 cellspacing=0 border=0
+			><tr><td id="Recom003_Cancel" class="buttonCtr100_normal">Cancel</td>
+				<td width="5"><img src="images/spacer.gif" border=0 width=1 height=1 alt=""></td>
+				<td id="Recom003_Send" class="buttonCtr100_normal">Send</td></tr
+		></table
+	></td></tr>
+</table>
 </div>
 
 <!-- *********************************************************************** -->
@@ -145,7 +194,7 @@ be downloaded while your are watching another show.
 
 <table width="100%" height="100%" cellpadding=0 cellspacing=0 border=0>
 	<tr><td align=left valign=top>
-<table id="MainTable" width=390 height=400 class="tableMain" cellpadding=0 cellspacing=0 border=0>
+<table id="MainTable" width=410 height=400 class="tableMain" cellpadding=0 cellspacing=0 border=0>
 	<tr>
 		<td></td>
 	</tr>
