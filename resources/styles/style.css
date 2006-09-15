@@ -1,6 +1,6 @@
 body
 {
-	background-color: #000000;
+	background-color: #FFFFFF;
 	margin-left: 0px;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -42,7 +42,7 @@ body
 	font-weight: bold;
 	font-size: 12pt;
 	font-family : Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFFC0;
+	color: #FFFFFF;
 }
 .textDataCtr	/*TODO: rename?*/
 {
@@ -139,9 +139,9 @@ body
 	padding-left: 10px;
 	padding-right: 5px;
 	font-weight: bold;
-	font-size: 12pt;
+	font-size: 10pt;
 	font-family : Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFFC0;
+	color: #FFFFFF;
 	text-align: left;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -166,25 +166,25 @@ body
 .listCtrRow380_normal
 {
 	behavior: url(styles/controls.htc);
-	height: 16px;
+	height: 20px;
 	font-weight: bold;
 	font-size: 12pt;
 	font-family : Verdana, Arial, Helvetica;
 	color: #FFFFFF;
 	text-align: left;
-	background-image: url(../images/listCtrRow380Normal.png);
+	background-image: url(../images/listCtrRow380Normal.gif);
 	cursor: hand;
 }
 .listCtrRow380_hilite
 {
 	behavior: url(styles/controls.htc);
-	height: 16px;
+	height: 20px;
 	font-weight: bold;
 	font-size: 12pt;
 	font-family : Verdana, Arial, Helvetica;
-	color: #FFFF40;
+	color: #FFFFFF;
 	text-align: left;
-	background-image: url(../images/listCtrRow380Normal.png);
+	background-image: url(../images/listCtrRow380Hilite.gif);
 	cursor: hand;
 }
 .listCtrRow380_hide
@@ -214,7 +214,7 @@ body
 	font-weight: bold;
 	font-size: 10pt;
 	font-family : Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFF40;
+	color: ##800080;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -307,7 +307,7 @@ body
 {
 	behavior: url(styles/controls.htc);
 	width: 100px;
-	height: 16px;
+	height: 26px;
 	font-weight: bold;
 	font-size: 12pt;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -320,13 +320,13 @@ body
 {
 	behavior: url(styles/controls.htc);
 	width: 100px;
-	height: 16px;
+	height: 26px;
 	font-weight: bold;
 	font-size: 12pt;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFF40;
+	color: #FFFFFF;
 	text-align: center;
-	background-image: url(../images/buttonCtr100Normal.gif);
+	background-image: url(../images/buttonCtr100Hilite.gif);
 	cursor: hand;
 }
 .buttonCtr100_disabled
