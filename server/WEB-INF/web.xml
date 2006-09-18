@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+	<context-param>
+		<param-name>dbconnect</param-name>
+		<param-value>/program files/inetvod/common/dbconnect.xml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>logdir</param-name>
+		<param-value>/program files/inetvod/logs/widgetserver</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>cryptokeystore</param-name>
+		<param-value>/program files/inetvod/common/cryptokeystore.xml</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>WidgetServlet</servlet-name>
+		<servlet-class>com.inetvod.widgetserver.WidgetServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>WidgetServlet</servlet-name>
+		<!-- <url-pattern>/inetvod/playerapi/xml</url-pattern> -->
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>
