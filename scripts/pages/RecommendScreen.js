@@ -30,7 +30,7 @@ function RecommendScreen(/*string*/ showName)
 
 	this.ScreenID = RecommendScreen.ScreenID;
 
-	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 70);
+	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 50);
 	this.fContainerControl.onNavigate = RecommendScreen.onNavigate;
 
 	oControl = new TextControl(RecommendScreen.ShowNameID, this.ScreenID);

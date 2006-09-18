@@ -95,6 +95,7 @@
 				<file name="NowPlayingScreen.js" />
 				<file name="RentedShowListControl.js" />
 				<file name="RecommendScreen.js" />
+				<file name="AdMgr.js" />
 			</filelist>
 		</concat>
 	</target>

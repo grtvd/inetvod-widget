@@ -118,6 +118,7 @@ function MainApp()
 
 	enableErrors(true);
 	window.setTimeout("MainAppIdle()", 500);
+	window.setTimeout("ChangeAdImage()", 5000);
 	StartScreen.newInstance();
 }
 

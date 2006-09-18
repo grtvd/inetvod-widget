@@ -1056,6 +1056,7 @@ function MainApp()
 
 	enableErrors(true);
 	window.setTimeout("MainAppIdle()", 500);
+	window.setTimeout("ChangeAdImage()", 5000);
 	StartScreen.newInstance();
 }
 
@@ -7283,7 +7284,7 @@ function RecommendScreen(/*string*/ showName)
 
 	this.ScreenID = RecommendScreen.ScreenID;
 
-	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 70);
+	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 50);
 	this.fContainerControl.onNavigate = RecommendScreen.onNavigate;
 
 	oControl = new TextControl(RecommendScreen.ShowNameID, this.ScreenID);
@@ -7333,6 +7334,28 @@ function RecommendScreen(/*string*/ showName)
 /*string*/ RecommendScreen.onNavigate = function(/*string*/ fromControl, /*int*/ key)
 {
 	return null;
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/* AdMgr.js */
+
+/******************************************************************************/
+/******************************************************************************/
+
+var gAdImagesList = new Array("images/300x125_auto_02.gif", "images/300x125_auto_ins_02.gif", "images/300x125_credit_02.gif", "images/300x125_loan_02.gif");
+var gNumAds = 4;
+var gCurAd = 0;
+
+function ChangeAdImage()
+{
+	window.setTimeout("ChangeAdImage()", 8000);
+
+	gCurAd++;
+	if(gCurAd >= gNumAds)
+		gCurAd = 0;
+	var oImage = document.getElementById("AdImage");
+	oImage.src = gAdImagesList[gCurAd];
 }
 
 /******************************************************************************/
