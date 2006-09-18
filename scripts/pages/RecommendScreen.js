@@ -12,9 +12,9 @@ RecommendScreen.SendID = "Recom003_Send";
 
 /******************************************************************************/
 
-RecommendScreen.newInstance = function(/*string*/ showName)
+RecommendScreen.newInstance = function(/*string*/ showID, /*string*/ showName)
 {
-	return MainApp.getThe().openScreen(new RecommendScreen(showName));
+	return MainApp.getThe().openScreen(new RecommendScreen(showID, showName));
 }
 
 /******************************************************************************/
@@ -24,11 +24,12 @@ RecommendScreen.prototype.constructor = RecommendScreen;
 
 /******************************************************************************/
 
-function RecommendScreen(/*string*/ showName)
+function RecommendScreen(/*string*/ showID, /*string*/ showName)
 {
 	var oControl;
 
 	this.ScreenID = RecommendScreen.ScreenID;
+	this.fShowID = showID;
 
 	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 50);
 	this.fContainerControl.onNavigate = RecommendScreen.onNavigate;
@@ -60,11 +61,15 @@ function RecommendScreen(/*string*/ showName)
 			return;
 		}
 
-		if(StartupDoSignonPassword(data))
+		var oSession = MainApp.getThe().getSession();
+		var rc = oSession.sendShowViaEmail(this.fShowID, data);
+		if(rc == "success")
 		{
 			this.close();
-			return;
 		}
+		else
+			showMsg(rc);
+		return;
 	}
 	else if(controlID == RecommendScreen.CancelID)
 	{

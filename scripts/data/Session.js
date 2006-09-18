@@ -27,6 +27,7 @@ function Session()
 
 	this.fNetworkURL = "http://api.inetvod.com/inetvod/playerapi/xml";
 	this.fCryptoAPIURL = "http://api.inetvod.com/inetvod/cryptoapi";
+	this.fWidgetServerAPIURL = "http://api.inetvod.com/widgetserver";
 	this.CanPingServer = false;
 
 	this.fPlayer = null;
@@ -281,6 +282,16 @@ function Session()
 	}
 
 	showMsg("Failed to open Media Player");
+}
+
+/******************************************************************************/
+
+/*void*/ Session.prototype.sendShowViaEmail = function(/*string*/ showID, /*string*/ email)
+{
+	var httpRequestor = HTTPRequestor.newInstance();
+
+	return httpRequestor.sendGet(this.fWidgetServerAPIURL, "/sendshow?showid=" + showID
+		+ "&email=" + email);
 }
 
 /******************************************************************************/

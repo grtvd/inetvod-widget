@@ -133,7 +133,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		if(testStrHasLen(rentedShowSearch.EpisodeName))
 			tempStr += ' - "' + rentedShowSearch.EpisodeName + '"';
 
-		RecommendScreen.newInstance(tempStr);
+		RecommendScreen.newInstance(rentedShowSearch.ShowID, tempStr);
 		return;
 	}
 

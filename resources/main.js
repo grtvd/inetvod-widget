@@ -4002,6 +4002,7 @@ function Session()
 
 	this.fNetworkURL = "http://api.inetvod.com/inetvod/playerapi/xml";
 	this.fCryptoAPIURL = "http://api.inetvod.com/inetvod/cryptoapi";
+	this.fWidgetServerAPIURL = "http://api.inetvod.com/widgetserver";
 	this.CanPingServer = false;
 
 	this.fPlayer = null;
@@ -4256,6 +4257,16 @@ function Session()
 	}
 
 	showMsg("Failed to open Media Player");
+}
+
+/******************************************************************************/
+
+/*void*/ Session.prototype.sendShowViaEmail = function(/*string*/ showID, /*string*/ email)
+{
+	var httpRequestor = HTTPRequestor.newInstance();
+
+	return httpRequestor.sendGet(this.fWidgetServerAPIURL, "/sendshow?showid=" + showID
+		+ "&email=" + email);
 }
 
 /******************************************************************************/
@@ -4916,7 +4927,7 @@ function CryptoAPI()
 {
 	var httpRequestor = HTTPRequestor.newInstance();
 
-	return httpRequestor.sendGet("/digest/" + data);
+	return httpRequestor.sendGet(session.getCryptoAPIURL(), "/digest/" + data);
 }
 
 /******************************************************************************/
@@ -5669,14 +5680,17 @@ function HTTPRequestor(/*string*/ sessionData)
 
 /******************************************************************************/
 
-/*string*/ HTTPRequestor.prototype.sendGet = function(/*string*/ request)
+/*string*/ HTTPRequestor.prototype.sendGet = function(/*string*/ url, /*string*/ request)
 {
 	var session = MainApp.getThe().getSession();
 
-	this.fXmlHttp.open("GET", session.getCryptoAPIURL() + request, false);
+	this.fXmlHttp.open("GET", url + request, false);
 	this.fXmlHttp.send();
 
-	return this.fXmlHttp.responseText;
+	if(this.fXmlHttp.status == 200)
+		return this.fXmlHttp.responseText;
+
+	return "An internal error has occurred: " + this.fXmlHttp.statusText;
 }
 
 /******************************************************************************/
@@ -7164,7 +7178,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		if(testStrHasLen(rentedShowSearch.EpisodeName))
 			tempStr += ' - "' + rentedShowSearch.EpisodeName + '"';
 
-		RecommendScreen.newInstance(tempStr);
+		RecommendScreen.newInstance(rentedShowSearch.ShowID, tempStr);
 		return;
 	}
 
@@ -7266,9 +7280,9 @@ RecommendScreen.SendID = "Recom003_Send";
 
 /******************************************************************************/
 
-RecommendScreen.newInstance = function(/*string*/ showName)
+RecommendScreen.newInstance = function(/*string*/ showID, /*string*/ showName)
 {
-	return MainApp.getThe().openScreen(new RecommendScreen(showName));
+	return MainApp.getThe().openScreen(new RecommendScreen(showID, showName));
 }
 
 /******************************************************************************/
@@ -7278,11 +7292,12 @@ RecommendScreen.prototype.constructor = RecommendScreen;
 
 /******************************************************************************/
 
-function RecommendScreen(/*string*/ showName)
+function RecommendScreen(/*string*/ showID, /*string*/ showName)
 {
 	var oControl;
 
 	this.ScreenID = RecommendScreen.ScreenID;
+	this.fShowID = showID;
 
 	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 50);
 	this.fContainerControl.onNavigate = RecommendScreen.onNavigate;
@@ -7314,11 +7329,15 @@ function RecommendScreen(/*string*/ showName)
 			return;
 		}
 
-		if(StartupDoSignonPassword(data))
+		var oSession = MainApp.getThe().getSession();
+		var rc = oSession.sendShowViaEmail(this.fShowID, data);
+		if(rc == "success")
 		{
 			this.close();
-			return;
 		}
+		else
+			showMsg(rc);
+		return;
 	}
 	else if(controlID == RecommendScreen.CancelID)
 	{

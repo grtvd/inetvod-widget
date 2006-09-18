@@ -20,7 +20,7 @@ function CryptoAPI()
 {
 	var httpRequestor = HTTPRequestor.newInstance();
 
-	return httpRequestor.sendGet(session.getCryptoAPIURL(), "/digest/" + data);
+	return httpRequestor.sendGet("/digest/" + data);
 }
 
 /******************************************************************************/

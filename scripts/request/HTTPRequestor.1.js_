@@ -30,17 +30,14 @@ function HTTPRequestor(/*string*/ sessionData)
 
 /******************************************************************************/
 
-/*string*/ HTTPRequestor.prototype.sendGet = function(/*string*/ url, /*string*/ request)
+/*string*/ HTTPRequestor.prototype.sendGet = function(/*string*/ request)
 {
 	var session = MainApp.getThe().getSession();
 
-	this.fXmlHttp.open("GET", url + request, false);
+	this.fXmlHttp.open("GET", session.getCryptoAPIURL() + request, false);
 	this.fXmlHttp.send();
 
-	if(this.fXmlHttp.status == 200)
-		return this.fXmlHttp.responseText;
-
-	return "An internal error has occurred: " + this.fXmlHttp.statusText;
+	return this.fXmlHttp.responseText;
 }
 
 /******************************************************************************/
