@@ -95,6 +95,11 @@
 				<file name="NowPlayingScreen.js" />
 				<file name="RentedShowListControl.js" />
 				<file name="RecommendScreen.js" />
+				<file name="SearchResultsScreen.js" />
+				<file name="ShowSearchListControl.js" />
+				<file name="SearchData.js" />
+				<file name="RentMgr.js" />
+				<file name="RentData.js" />
 				<file name="AdMgr.js" />
 			</filelist>
 		</concat>

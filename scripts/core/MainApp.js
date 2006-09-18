@@ -173,8 +173,8 @@ function MainApp()
 		oScreen.show(true);
 		oScreen.setFocus(true);
 	}
-	else
-		NowPlayingScreen.newInstance();
+//	else
+//		NowPlayingScreen.newInstance();
 }
 
 /******************************************************************************/
@@ -291,6 +291,8 @@ function MainApp()
 
 		oScreen.idle();
 	}
+	else
+		NowPlayingScreen.newInstance();
 }
 
 /******************************************************************************/

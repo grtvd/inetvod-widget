@@ -80,11 +80,13 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	if(controlID == NowPlayingScreen.PlayListID)
 	{
 		this.close();
-		//NowPlayingScreen.newInstance();
+		NowPlayingScreen.newInstance();
 		return;
 	}
 	else if(controlID == NowPlayingScreen.FeaturedID)
 	{
+		this.close();
+		SearchResultsScreen.newInstance();
 		return;
 	}
 	else if(controlID == NowPlayingScreen.CloseID)
@@ -148,9 +150,6 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 
 	if(controlID == NowPlayingScreen.ShowListID)
 	{
-		var rentedShowListControl = this.getControl(NowPlayingScreen.ShowListID);
-		var rentedShowSearch = rentedShowListControl.getFocusedItemValue();
-
 		return;
 	}
 

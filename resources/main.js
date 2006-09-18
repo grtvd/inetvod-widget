@@ -1111,8 +1111,8 @@ function MainApp()
 		oScreen.show(true);
 		oScreen.setFocus(true);
 	}
-	else
-		NowPlayingScreen.newInstance();
+//	else
+//		NowPlayingScreen.newInstance();
 }
 
 /******************************************************************************/
@@ -1229,6 +1229,8 @@ function MainApp()
 
 		oScreen.idle();
 	}
+	else
+		NowPlayingScreen.newInstance();
 }
 
 /******************************************************************************/
@@ -7125,11 +7127,13 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 	if(controlID == NowPlayingScreen.PlayListID)
 	{
 		this.close();
-		//NowPlayingScreen.newInstance();
+		NowPlayingScreen.newInstance();
 		return;
 	}
 	else if(controlID == NowPlayingScreen.FeaturedID)
 	{
+		this.close();
+		SearchResultsScreen.newInstance();
 		return;
 	}
 	else if(controlID == NowPlayingScreen.CloseID)
@@ -7193,9 +7197,6 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 
 	if(controlID == NowPlayingScreen.ShowListID)
 	{
-		var rentedShowListControl = this.getControl(NowPlayingScreen.ShowListID);
-		var rentedShowSearch = rentedShowListControl.getFocusedItemValue();
-
 		return;
 	}
 
@@ -7353,6 +7354,352 @@ function RecommendScreen(/*string*/ showID, /*string*/ showName)
 /*string*/ RecommendScreen.onNavigate = function(/*string*/ fromControl, /*int*/ key)
 {
 	return null;
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/* SearchResultsScreen.js */
+
+/******************************************************************************/
+/******************************************************************************/
+
+SearchResultsScreen.ScreenID = "Search003";
+SearchResultsScreen.PlayListID = "Search003_PlayList";
+SearchResultsScreen.FeaturedID = "Search003_Featured";
+SearchResultsScreen.CloseID = "Search003_Close";
+SearchResultsScreen.ShowListID = "Search003_ShowList";
+SearchResultsScreen.NoShowsTextID = "Search003_NoShowsText";
+
+/******************************************************************************/
+
+SearchResultsScreen.newInstance = function()
+{
+	var oSession = MainApp.getThe().getSession();
+	var showSearchListRef = new Object();
+
+	var oSearchData = new SearchData();
+	oSearchData.CategoryID = Category.FeaturedCategoryID;
+
+	if(oSession.showSearch(oSearchData, showSearchListRef))
+	{
+		var oScreen = new SearchResultsScreen(showSearchListRef.value);
+		MainApp.getThe().openScreen(oScreen);
+		oScreen.focusControl(SearchResultsScreen.ShowListID, true);
+		return oScreen;
+	}
+
+	return null;
+}
+
+/******************************************************************************/
+
+SearchResultsScreen.prototype = new Screen();
+SearchResultsScreen.prototype.constructor = SearchResultsScreen;
+
+/******************************************************************************/
+
+function SearchResultsScreen(/*Array*/ showSearchList)
+{
+	this.fShowSearchList = showSearchList;
+//	this.fShowSearchList.sort(ShowSearchByNameCmpr);
+	this.ScreenID = SearchResultsScreen.ScreenID;
+
+	var oRowItemList = new Array();
+	oRowItemList.push(new ListControlRowItem("Show", 380));
+
+	this.fContainerControl = new ContainerControl(this.ScreenID, 10, 10);
+
+	var oControl;
+
+	this.newControl(new ButtonControl(SearchResultsScreen.PlayListID, this.ScreenID));
+	this.newControl(new ButtonControl(SearchResultsScreen.FeaturedID, this.ScreenID));
+	this.newControl(new ButtonControl(SearchResultsScreen.CloseID, this.ScreenID));
+
+	oControl = new ShowSearchListControl(SearchResultsScreen.ShowListID, this.ScreenID,
+		6, oRowItemList, showSearchList);
+	if(showSearchList.length > 0)
+		this.newControl(oControl);
+	oControl.show(showSearchList.length > 0);
+
+	oControl = new TextControl(SearchResultsScreen.NoShowsTextID, this.ScreenID);
+	if(showSearchList.length == 0)
+		this.newControl(oControl);
+	oControl.show(showSearchList.length == 0);
+}
+
+/******************************************************************************/
+
+/*void*/ SearchResultsScreen.prototype.onButton = function(/*string*/ controlID)
+{
+	var oSession = MainApp.getThe().getSession();
+	var oShowSearchListControl;
+
+	if(controlID == SearchResultsScreen.PlayListID)
+	{
+		this.close();
+		NowPlayingScreen.newInstance();
+		return;
+	}
+	else if(controlID == SearchResultsScreen.FeaturedID)
+	{
+		this.close();
+		SearchResultsScreen.newInstance();
+		return;
+	}
+	else if(controlID == SearchResultsScreen.CloseID)
+	{
+		window.close();
+		return;
+	}
+	else if(controlID == SearchResultsScreen.ShowListID)
+	{
+		oShowSearchListControl = this.getControl(SearchResultsScreen.ShowListID);
+		var oShowSearch = oShowSearchListControl.getFocusedItemValue();
+
+		var oShowDetail = oSession.showDetail(oShowSearch.ShowID);
+		if(oShowDetail != null)
+		{
+			var rc = RentMgr.rent(oShowDetail);
+			if(rc == RentMgr.ResultSuccess)
+				showMsg("This Show has been successfully added to your Playlist.");
+			else if(rc == RentMgr.ResultError)
+				;
+			else
+				showMsg(rc);
+		}
+
+		return;
+	}
+
+	Screen.prototype.onButton.call(this, controlID);
+}
+
+/******************************************************************************/
+
+/*void*/ SearchResultsScreen.prototype.onListItem = function(/*string*/ controlID)
+{
+	var oSession = MainApp.getThe().getSession();
+
+	if(controlID == SearchResultsScreen.ShowListID)
+	{
+		return;
+	}
+
+	Screen.prototype.onButton.call(this, controlID);
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/* ShowSearchListControl.js */
+
+/******************************************************************************/
+/******************************************************************************/
+
+ShowSearchListControl.prototype = new ListControl();
+ShowSearchListControl.prototype.constructor = ListControl;
+
+/******************************************************************************/
+
+function ShowSearchListControl(/*string*/ controlID, /*string*/ screenID, /*int*/ numRows,
+	/*ListControlRowItemList*/ oRowItemList, /*Array*/ showSearchList)
+{
+	this.ShowSearchList = showSearchList;
+
+	ListControl.prototype.init.call(this, controlID, screenID, numRows, oRowItemList);
+}
+
+/******************************************************************************/
+
+/*void*/ ShowSearchListControl.prototype.setShowSearchList = function(
+	/*Array*/ showSearchList, /*boolean*/ reset)
+{
+	this.ShowSearchList = showSearchList;
+	this.recalcAfterDataChange(reset);
+}
+
+/******************************************************************************/
+
+/*ShowSearch*/ ShowSearchListControl.prototype.getFocusedItemValue = function()
+{
+	var focusedItem = this.getFocusedItemPos();
+	if((focusedItem >= 0) && (focusedItem < this.ShowSearchList.length))
+		return this.ShowSearchList[focusedItem];
+
+	return null;
+}
+
+/******************************************************************************/
+
+/*int*/ ShowSearchListControl.prototype.getItemCount = function()
+{
+	return this.ShowSearchList.length;
+}
+
+/******************************************************************************/
+
+/*void*/ ShowSearchListControl.prototype.drawItem = function(/*int*/ item,
+	/*ListControlRow*/ oRow)
+{
+	var showSearch = this.ShowSearchList[item];
+
+	tempStr = showSearch.Name;
+	if(testStrHasLen(showSearch.EpisodeName))
+		tempStr += ' - "' + showSearch.EpisodeName + '"';
+	oRow.drawRowItem(0, tempStr);
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/* SearchData.js */
+
+/******************************************************************************/
+/******************************************************************************/
+
+function SearchData()
+{
+	this.Search = null;
+
+	this.ProviderID = Provider.AllProvidersID;
+	this.CategoryID = Category.AllCategoriesID;
+	this.RatingID = Rating.AllRatingsID;
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/* RentMgr.js */
+
+/******************************************************************************/
+/******************************************************************************/
+
+RentMgr.ResultSuccess = "success";
+RentMgr.ResultError = "error";
+
+/******************************************************************************/
+
+RentMgr.rent = function(/*ShowDetail*/ oShowDetail)
+{
+	var oMgr = new RentMgr(oShowDetail);
+
+	return oMgr.allowAnonymous();
+}
+
+/******************************************************************************/
+
+function RentMgr(/*ShowDetail*/ oShowDetail)
+{
+	this.fRentData = new RentData(oShowDetail);
+}
+
+/******************************************************************************/
+
+/*string*/ RentMgr.prototype.allowAnonymous = function()
+{
+	if(this.fRentData.HasMultipleRentals)
+		return "Can't get shows with multiple rentals.";
+
+	if(this.fRentData.ShowCost.ShowCostType == sct_Free)
+		return this.checkShowAvail();
+
+	return "Can only get shows that are Free.";
+}
+
+/******************************************************************************/
+
+/*string*/ RentMgr.prototype.checkShowAvail = function()
+{
+	var oSession = MainApp.getThe().getSession();
+	var oCheckShowAvailResp;
+	var statusCodeRef = new Object();
+	var statusCode;
+
+	oCheckShowAvailResp = oSession.checkShowAvail(this.fRentData.getShowID(),
+		this.fRentData.getProviderID(), this.fRentData.ShowCost, statusCodeRef);
+	statusCode = statusCodeRef.value;
+	if(statusCode != sc_Success)
+		return RentMgr.ResultError;
+
+	var oShowCost = oCheckShowAvailResp.ShowCost;
+
+	this.fRentData.ShowCost = oShowCost;
+	if(oShowCost.ShowCostType == sct_PayPerView)
+		return "Can only get shows that are Free.";
+
+	return this.rentShow();
+}
+
+/******************************************************************************/
+
+/*string*/ RentMgr.prototype.rentShow = function()
+{
+	var oSession = MainApp.getThe().getSession();
+	var oRentShowResp;
+
+	oRentShowResp = oSession.rentShow(this.fRentData.getShowID(),
+		this.fRentData.getProviderID(), this.fRentData.ShowCost);
+	if(oRentShowResp != null)
+	{
+		return RentMgr.ResultSuccess;
+	}
+
+	return RentMgr.ResultError;
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/* RentData.js */
+
+/******************************************************************************/
+/******************************************************************************/
+
+function RentData(/*ShowDetail*/ oShowDetail)
+{
+	var oSession = MainApp.getThe().getSession();
+
+	this.ShowDetail = oShowDetail;
+
+	this.HasMultipleRentals = true;
+	this.Provider = null;
+	this.ShowCost = null;
+
+	if(this.ShowDetail.ShowProviderList.length == 1)
+		if(this.ShowDetail.ShowProviderList[0].ShowCostList.length == 1)
+		{
+			this.HasMultipleRentals = false;
+			this.Provider = oSession.getProvider(this.ShowDetail.ShowProviderList[0].ProviderID);
+			this.ShowCost = this.ShowDetail.ShowProviderList[0].ShowCostList[0];
+		}
+
+	this.UserID = null;
+	this.Password = null;
+}
+
+/******************************************************************************/
+
+/*string*/ RentData.prototype.getShowID = function()
+{
+	return this.ShowDetail.ShowID;
+}
+
+/******************************************************************************/
+
+/*string*/ RentData.prototype.getProviderID = function()
+{
+	return this.Provider.ProviderID;
+}
+
+/******************************************************************************/
+
+/*string*/ RentData.prototype.getProviderName = function()
+{
+	return this.Provider.Name;
+}
+
+/******************************************************************************/
+
+/*void*/ RentData.prototype.setRental = function(/*Provider*/ provider, /*ShowCost*/ showCost)
+{
+	this.Provider = provider;
+	this.ShowCost = showCost;
 }
 
 /******************************************************************************/
