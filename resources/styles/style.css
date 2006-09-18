@@ -67,7 +67,7 @@ body
 	font-weight: normal;
 	font-size: 10pt;
 	font-family : Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFFC0;
+	color: #FFFFFF;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -214,7 +214,7 @@ body
 	font-weight: bold;
 	font-size: 10pt;
 	font-family : Verdana, Arial, Helvetica, sans-serif;
-	color: ##800080;
+	color: #FFFFFF;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -243,7 +243,7 @@ body
 	font-weight: normal;
 	font-size: 8pt;
 	font-family : Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFF40;
+	color: #FFFFFF;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -255,7 +255,7 @@ body
 	font-weight: bold;
 	font-size: 8pt;
 	font-family : Verdana, Arial, Helvetica;
-	color: #FFFFC0;
+	color: #FFFFFF;
 }
 
 .listCtrPrev_normal

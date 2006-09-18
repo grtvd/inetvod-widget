@@ -8,6 +8,7 @@ SearchResultsScreen.PlayListID = "Search003_PlayList";
 SearchResultsScreen.FeaturedID = "Search003_Featured";
 SearchResultsScreen.CloseID = "Search003_Close";
 SearchResultsScreen.ShowListID = "Search003_ShowList";
+SearchResultsScreen.GetID = "Search003_Get";
 SearchResultsScreen.NoShowsTextID = "Search003_NoShowsText";
 
 /******************************************************************************/
@@ -61,6 +62,8 @@ function SearchResultsScreen(/*Array*/ showSearchList)
 		this.newControl(oControl);
 	oControl.show(showSearchList.length > 0);
 
+	this.newControl(new ButtonControl(SearchResultsScreen.GetID, this.ScreenID));
+
 	oControl = new TextControl(SearchResultsScreen.NoShowsTextID, this.ScreenID);
 	if(showSearchList.length == 0)
 		this.newControl(oControl);
@@ -91,7 +94,7 @@ function SearchResultsScreen(/*Array*/ showSearchList)
 		window.close();
 		return;
 	}
-	else if(controlID == SearchResultsScreen.ShowListID)
+	else if((controlID == SearchResultsScreen.ShowListID) || (controlID == SearchResultsScreen.GetID))
 	{
 		oShowSearchListControl = this.getControl(SearchResultsScreen.ShowListID);
 		var oShowSearch = oShowSearchListControl.getFocusedItemValue();
