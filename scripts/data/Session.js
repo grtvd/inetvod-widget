@@ -57,7 +57,7 @@ function Session()
 	this.fPlayer = Player.newInstance();
 
 	this.fPlayer.ManufacturerID = "inetvod";
-	this.fPlayer.ModelNo = "mce";
+	this.fPlayer.ModelNo = "winwid";
 	this.fPlayer.SerialNo = "9876543210";
 	this.fPlayer.Version = "0.0.0001";
 }
