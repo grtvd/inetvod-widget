@@ -4250,12 +4250,12 @@ function Session()
 
 /******************************************************************************/
 
-/*void*/ Session.prototype.openMediaPlayer = function(/*string*/ url)
+/*void*/ Session.prototype.openPlayer = function(/*string*/ url)
 {
 	if(this.fWidgetHelper != null)
 	{
-		this.fWidgetHelper.openMediaPlayer(url);
-		return;
+		if(this.fWidgetHelper.openPlayer(url))
+			return;
 	}
 
 	showMsg("Failed to open Media Player");
@@ -7169,7 +7169,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		if(!testStrHasLen(url))
 			url = watchShowResp.License.ShowURL;
 
-		oSession.openMediaPlayer(url);
+		oSession.openPlayer(url);
 		return;
 	}
 	else if(controlID == NowPlayingScreen.SendID)

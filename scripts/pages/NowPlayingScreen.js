@@ -122,7 +122,7 @@ function NowPlayingScreen(/*Array*/ rentedShowSearchList)
 		if(!testStrHasLen(url))
 			url = watchShowResp.License.ShowURL;
 
-		oSession.openMediaPlayer(url);
+		oSession.openPlayer(url);
 		return;
 	}
 	else if(controlID == NowPlayingScreen.SendID)

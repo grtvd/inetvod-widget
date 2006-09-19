@@ -17,7 +17,39 @@ namespace iNetVOD.MCE.Widget
 		{
 		}
 
-		public void openMediaPlayer(string mediaFile)
+		private static string[] fMediaPlayerExtList = { ".wmv", ".asf", ".avi", ".wma", ".mp3", ".wav" };
+		private static string[] fQuickTimeExtList = { ".mov", ".mp4" };
+		private static string[] fFlashExtList = { ".swf" };
+
+		public bool openPlayer(string mediaFile)
+		{
+			string ext = Path.GetExtension(mediaFile);
+			if((ext != null) && (ext.Length != 0))
+			{
+				if(isExtInList(fMediaPlayerExtList, ext))
+					openMediaPlayer(mediaFile);
+				else if(isExtInList(fQuickTimeExtList, ext))
+					openQuickTime(mediaFile);
+				else if(isExtInList(fFlashExtList, ext))
+					openInternetExplorer(mediaFile);
+				else
+					return false;
+			}
+			else
+				return false;
+
+			return true;
+		}
+
+		private bool isExtInList(string[] mediaPlayerExtList, string ext)
+		{
+			foreach(string playerExt in mediaPlayerExtList)
+				if(playerExt.Equals(ext))
+					return true;
+			return false;
+		}
+
+		private void openMediaPlayer(string mediaFile)
 		{
 			Process proc = new System.Diagnostics.Process();
 			proc.EnableRaisingEvents = false;
@@ -25,6 +57,29 @@ namespace iNetVOD.MCE.Widget
 			proc.StartInfo.FileName = "C:\\Program Files\\Windows Media Player\\wmplayer.exe";
 			//proc.StartInfo.WorkingDirectory = work;
 			proc.StartInfo.Arguments = "/prefetch:9 /Play \"" + mediaFile + "\"";
+			proc.Start();
+			//proc.WaitForExit();
+		}
+		public void openQuickTime(string mediaFile)
+		{
+			Process proc = new System.Diagnostics.Process();
+			proc.EnableRaisingEvents = false;
+			//proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+			proc.StartInfo.FileName = "C:\\Program Files\\QuickTime\\QuickTimePlayer.exe";
+			//proc.StartInfo.WorkingDirectory = work;
+			proc.StartInfo.Arguments = "\"" + mediaFile + "\"";
+			proc.Start();
+			//proc.WaitForExit();
+		}
+
+		public void openInternetExplorer(string mediaFile)
+		{
+			Process proc = new System.Diagnostics.Process();
+			proc.EnableRaisingEvents = false;
+			//proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+			proc.StartInfo.FileName = "C:\\Program Files\\Internet Explorer\\iexplore.exe";
+			//proc.StartInfo.WorkingDirectory = work;
+			proc.StartInfo.Arguments = mediaFile;
 			proc.Start();
 			//proc.WaitForExit();
 		}
