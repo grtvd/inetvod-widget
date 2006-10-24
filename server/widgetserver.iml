@@ -22,6 +22,9 @@
     <orderEntry type="library" name="logging-log4j-1.2.11" level="application" />
     <orderEntry type="library" name="microsoft sql server 2005 jdbc driver" level="application" />
     <orderEntry type="library" name="vladium-timer" level="application" />
+    <orderEntry type="library" name="commons-collections-3.1" level="application" />
+    <orderEntry type="library" name="commons-dbcp-1.2.1" level="application" />
+    <orderEntry type="library" name="commons-pool-1.2" level="application" />
     <orderEntryProperties />
   </component>
   <component name="WebModuleBuildComponent">
@@ -38,11 +41,23 @@
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
+    <containerElement type="library" level="application" name="commons-collections-3.1">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" level="application" name="commons-dbcp-1.2.1">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
     <containerElement type="library" level="application" name="commons-httpclient-3.0-rc3">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <containerElement type="library" level="application" name="commons-logging-1.0.4">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" level="application" name="commons-pool-1.2">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
