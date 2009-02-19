@@ -16,11 +16,7 @@
           <setting name="EXPLODED_ENABLED" value="true" />
           <setting name="JAR_URL" value="file://$MODULE_DIR$/widgetserver.war" />
           <setting name="JAR_ENABLED" value="false" />
-          <setting name="BUILD_MODULE_ON_FRAME_DEACTIVATION" value="false" />
-          <setting name="BUILD_EXTERNAL_DEPENDENCIES" value="false" />
           <setting name="EXCLUDE_EXPLODED_DIRECTORY" value="true" />
-          <setting name="RUN_JASPER_VALIDATION" value="false" />
-          <setting name="BUILD_ONLY_WEB_RESOURCES" value="false" />
         </building>
         <packaging>
           <containerElement type="module" name="widgetserver">
@@ -97,7 +93,6 @@
     <orderEntry type="library" name="commons-collections-3.1" level="application" />
     <orderEntry type="library" name="commons-dbcp-1.2.1" level="application" />
     <orderEntry type="library" name="commons-pool-1.2" level="application" />
-    <orderEntryProperties />
   </component>
 </module>
 
